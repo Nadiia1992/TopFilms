@@ -1,0 +1,71 @@
+﻿@model TopFilms.Models.Film
+
+@{
+    ViewData["Title"] = "Редагування";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Редагування</h2>
+
+<h6>Фільму</h6>
+<h5>@Model.Name</h5>
+<hr />
+<div class="cont-form">
+<div class="row">
+    <div class="col-md-4 text-center">
+        <img src="@Url.Content(Model.Poster)" alt="@Model.Name" class="delete-img" />
+    </div>
+    <div class="col-md-8">
+            <form asp-action="Edit" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-9">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-9">
+                <label asp-for="Director" class="control-label"></label>
+                <input asp-for="Director" class="form-control" />
+                <span asp-validation-for="Director" class="text-danger"></span>
+            </div>
+            <div class="mb-9">
+                <label asp-for="Genre" class="control-label"></label>
+                <input asp-for="Genre" class="form-control" />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+            <div class="mb-9">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+
+
+             <div class="mb-9">
+                 <label asp-for="Poster" class="form-label fw-bold"></label>
+                 <input name="posterFile" class="form-control" type="file" accept="image/png, image/jpeg" placeholder="Введіть постер" />
+                 <span asp-validation-for="Poster" class="text-danger"></span>
+                </div>
+
+
+            <div class="mb-9">
+                <label asp-for="Info" class="control-label"></label>
+                    <textarea asp-for="Info" class="form-control " rows="7"></textarea>
+                <span asp-validation-for="Info" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary ms-2">Повернутися до списку</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

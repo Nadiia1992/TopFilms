@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TopFilms.Models;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");

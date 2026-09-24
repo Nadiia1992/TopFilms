@@ -1,0 +1,65 @@
+﻿@model TopFilms.Models.Film
+@{
+    ViewData["Title"] = "Додати фільм";
+}
+
+<h2 class="create-title">Додати новий фільм</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <form asp-action="Create" method="post" enctype="multipart/form-data" class="creare-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label fw-bold"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Введіть назву" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Director" class="form-label fw-bold"></label>
+                        <input asp-for="Director" class="form-control" placeholder="Введіть режисера" />
+                        <span asp-validation-for="Director" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Genre" class="form-label fw-bold"></label>
+                        <input asp-for="Genre" class="form-control" placeholder="Введіть жанр" />
+                        <span asp-validation-for="Genre" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Year" class="form-label fw-bold"></label>
+                        <input asp-for="Year" class="form-control" type="number" placeholder="Введіть рік" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Poster" class="form-label fw-bold"></label>
+                        <input name="posterFile" class="form-control" type="file" accept="image/png, image/jpeg" placeholder="Введіть постер" />
+                        <span asp-validation-for="Poster" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Info" class="form-label fw-bold"></label>
+                        <textarea asp-for="Info" class="form-control" placeholder="Введіть опис"></textarea>
+                        <span asp-validation-for="Info" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-light border">Повернутися</a>
+                        <input type="submit" value="Зберегти" class="btn btn-primary px-4 sav-btn" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
